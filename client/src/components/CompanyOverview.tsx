@@ -105,7 +105,7 @@ export default function CompanyOverview({ onExploreMore }: CompanyOverviewProps)
             <Card key={index} className="p-6 text-center hover-elevate">
               <CardContent className="p-0">
                 <div className="w-12 h-12 bg-gradient-to-r from-chart-1/20 to-primary/20 rounded-lg flex items-center justify-center mx-auto mb-4">
-                  <value.icon className="w-6 h-6 text-primary" />
+                  <value.icon className="w-6 h-6 text-foreground" />
                 </div>
                 <h3 className="font-semibold mb-2">{value.title}</h3>
                 <p className="text-sm text-muted-foreground">{value.description}</p>
