@@ -61,8 +61,11 @@ export default function PIKA({ onBack }: PIKAProps) {
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back
             </Button>
-            <Badge variant="outline" className="border-primary/30 text-primary">
+            <Badge variant="outline" className="border-primary/30 text-primary mr-4">
               Single Board Computer
+            </Badge>
+            <Badge className="bg-gradient-to-r from-chart-1 to-primary text-primary-foreground">
+              Coming Soon
             </Badge>
           </div>
 

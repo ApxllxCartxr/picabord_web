@@ -13,22 +13,34 @@ export default function Division({ division, onBack }: DivisionProps) {
   const divisionData: Record<string, any> = {
     tec: {
       title: "TEC",
-      subtitle: "Technical Engineering Solutions",
-      description: "Advanced technical engineering solutions designed to tackle the most complex industrial challenges with precision, reliability, and innovative approaches.",
+      subtitle: "SaaS Solutions & Technical Engineering",
+      description: "We are developing innovative SaaS-based products that revolutionize business operations. Our focus is on creating cloud-native solutions that streamline workflows, enhance productivity, and provide scalable business management tools.",
       color: "from-chart-1 to-primary",
+      products: [
+        {
+          name: "Freelancer CRM",
+          description: "Comprehensive customer relationship management system designed specifically for freelancers and independent contractors. Features include client management, project tracking, proposal generation, and automated follow-ups.",
+          status: "Coming Soon"
+        },
+        {
+          name: "Invoice Management System",
+          description: "Smart invoicing platform that automates billing processes, tracks payments, manages recurring subscriptions, and provides detailed financial analytics for businesses of all sizes.",
+          status: "Coming Soon"
+        }
+      ],
       features: [
-        "Precision Engineering & Manufacturing",
-        "Advanced System Integration",
-        "Quality Assurance & Testing",
-        "Technical Consulting Services",
-        "Custom Solution Development",
-        "Performance Optimization"
+        "Cloud-Native SaaS Architecture",
+        "Real-time Data Synchronization", 
+        "Advanced User Analytics",
+        "Multi-tenant Security",
+        "API Integration Platform",
+        "Scalable Infrastructure"
       ],
       applications: [
-        "Industrial Automation",
-        "Aerospace Engineering", 
-        "Medical Device Manufacturing",
-        "Automotive Systems"
+        "Business Process Automation",
+        "Customer Relationship Management",
+        "Financial Management Systems",
+        "Workflow Optimization Tools"
       ]
     },
     arclight: {
@@ -134,56 +146,134 @@ export default function Division({ division, onBack }: DivisionProps) {
         </div>
       </section>
 
-      {/* Features & Applications */}
+      {/* Products (for TEC) or Features & Applications (for others) */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12">
-            {/* Key Features */}
-            <Card className="p-8 hover-elevate">
-              <CardHeader className="pb-6">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
-                    <Zap className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <CardTitle>Key Features</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="space-y-3">
-                  {data.features.map((feature: string, index: number) => (
-                    <div key={index} className="flex items-center space-x-3">
-                      <CheckCircle className="w-5 h-5 text-chart-1 flex-shrink-0" />
-                      <span className="text-sm">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+          {data.products ? (
+            /* Product showcase for TEC */
+            <div className="space-y-12">
+              <div className="text-center">
+                <h2 className="text-3xl font-bold mb-4">Our SaaS Products</h2>
+                <p className="text-muted-foreground max-w-2xl mx-auto">
+                  Revolutionary cloud-based solutions currently in development
+                </p>
+              </div>
+              
+              <div className="grid lg:grid-cols-2 gap-8">
+                {data.products.map((product: any, index: number) => (
+                  <Card key={index} className="p-8 hover-elevate">
+                    <CardHeader className="pb-6">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-xl">{product.name}</CardTitle>
+                        <Badge className="bg-gradient-to-r from-chart-1 to-primary text-primary-foreground">
+                          {product.status}
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="p-0">
+                      <p className="text-muted-foreground leading-relaxed">
+                        {product.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
 
-            {/* Applications */}
-            <Card className="p-8 hover-elevate">
-              <CardHeader className="pb-6">
-                <div className="flex items-center space-x-3">
-                  <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
-                    <Globe className="w-5 h-5 text-primary-foreground" />
-                  </div>
-                  <CardTitle>Applications</CardTitle>
-                </div>
-              </CardHeader>
-              <CardContent className="p-0">
-                <div className="grid gap-4">
-                  {data.applications.map((app: string, index: number) => (
-                    <div 
-                      key={index}
-                      className="p-4 bg-muted/50 rounded-lg hover-elevate transition-all duration-200"
-                    >
-                      <span className="font-medium">{app}</span>
+              {/* Technical Features for TEC */}
+              <div className="grid lg:grid-cols-2 gap-12 mt-16">
+                <Card className="p-8 hover-elevate">
+                  <CardHeader className="pb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
+                        <Zap className="w-5 h-5 text-primary-foreground" />
+                      </div>
+                      <CardTitle>Technical Features</CardTitle>
                     </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="space-y-3">
+                      {data.features.map((feature: string, index: number) => (
+                        <div key={index} className="flex items-center space-x-3">
+                          <CheckCircle className="w-5 h-5 text-chart-1 flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="p-8 hover-elevate">
+                  <CardHeader className="pb-6">
+                    <div className="flex items-center space-x-3">
+                      <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
+                        <Globe className="w-5 h-5 text-primary-foreground" />
+                      </div>
+                      <CardTitle>Applications</CardTitle>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                    <div className="grid gap-4">
+                      {data.applications.map((app: string, index: number) => (
+                        <div 
+                          key={index}
+                          className="p-4 bg-muted/50 rounded-lg hover-elevate transition-all duration-200"
+                        >
+                          <span className="font-medium">{app}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </div>
+          ) : (
+            /* Standard layout for other divisions */
+            <div className="grid lg:grid-cols-2 gap-12">
+              <Card className="p-8 hover-elevate">
+                <CardHeader className="pb-6">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
+                      <Zap className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <CardTitle>Key Features</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="space-y-3">
+                    {data.features.map((feature: string, index: number) => (
+                      <div key={index} className="flex items-center space-x-3">
+                        <CheckCircle className="w-5 h-5 text-chart-1 flex-shrink-0" />
+                        <span className="text-sm">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card className="p-8 hover-elevate">
+                <CardHeader className="pb-6">
+                  <div className="flex items-center space-x-3">
+                    <div className={`w-10 h-10 bg-gradient-to-r ${data.color} rounded-lg flex items-center justify-center`}>
+                      <Globe className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <CardTitle>Applications</CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-0">
+                  <div className="grid gap-4">
+                    {data.applications.map((app: string, index: number) => (
+                      <div 
+                        key={index}
+                        className="p-4 bg-muted/50 rounded-lg hover-elevate transition-all duration-200"
+                      >
+                        <span className="font-medium">{app}</span>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          )}
         </div>
       </section>
 
