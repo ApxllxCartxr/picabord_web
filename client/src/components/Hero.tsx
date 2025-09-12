@@ -60,21 +60,6 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
               </Button>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-8 pt-8">
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-chart-1">99.9%</div>
-                <div className="text-sm text-muted-foreground">Reliability</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-primary">10x</div>
-                <div className="text-sm text-muted-foreground">Faster</div>
-              </div>
-              <div className="text-center lg:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-chart-2">Award</div>
-                <div className="text-sm text-muted-foreground">Winning</div>
-              </div>
-            </div>
           </div>
 
           {/* Right Content - Product Image */}
