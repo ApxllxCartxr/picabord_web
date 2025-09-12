@@ -2,62 +2,28 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Award, Users, Globe, Target } from "lucide-react";
-import facilityImage from "@assets/generated_images/Tech_research_facility_interior_8d8e4ed6.png";
-import buildingImage from "@assets/generated_images/Modern_office_building_exterior_a50a638e.png";
 
 interface AboutProps {
   onBack: () => void;
 }
 
 export default function About({ onBack }: AboutProps) {
-  const timeline = [
-    {
-      year: "2018",
-      title: "Founded",
-      description: "PICABORD established with vision to revolutionize technology"
-    },
-    {
-      year: "2020", 
-      title: "First Patent",
-      description: "Breakthrough innovation in optical technology patented"
-    },
-    {
-      year: "2022",
-      title: "Global Expansion",
-      description: "Operations expanded to 15 countries worldwide"
-    },
-    {
-      year: "2024",
-      title: "PIKA1 Launch",
-      description: "Flagship product PIKA1 revolutionizes the market"
-    },
-    {
-      year: "2025",
-      title: "Future Forward",
-      description: "Continuing to push boundaries of innovation"
-    }
-  ];
 
   const leadership = [
     {
-      name: "Dr. Sarah Chen",
-      role: "CEO & Founder",
-      background: "PhD in Electrical Engineering, Former Tesla Senior Engineer"
+      name: "Anish K",
+      role: "Founding Director",
+      background: "Visionary leader driving innovation across all technology divisions"
     },
     {
-      name: "Marcus Rodriguez",
-      role: "CTO",
-      background: "MS Computer Science, Ex-Google AI Research Lead"
+      name: "Zahid Hussain J",
+      role: "Managing Director",
+      background: "Strategic leadership and operational excellence in technology management"
     },
     {
-      name: "Dr. Priya Patel",
-      role: "Head of Research",
-      background: "PhD in Materials Science, Former MIT Professor"
-    },
-    {
-      name: "James Wilson",
-      role: "VP of Engineering",
-      background: "MS Mechanical Engineering, Ex-SpaceX Principal Engineer"
+      name: "Deva Dharshini M",
+      role: "Human Resources",
+      background: "People-focused leader building exceptional teams for technological advancement"
     }
   ];
 
@@ -92,25 +58,6 @@ export default function About({ onBack }: AboutProps) {
             </p>
           </div>
 
-          {/* Images */}
-          <div className="grid md:grid-cols-2 gap-8 mb-16">
-            <Card className="overflow-hidden hover-elevate">
-              <img
-                src={facilityImage}
-                alt="PICABORD research facility"
-                className="w-full h-64 object-cover"
-                data-testid="img-about-facility"
-              />
-            </Card>
-            <Card className="overflow-hidden hover-elevate">
-              <img
-                src={buildingImage}
-                alt="PICABORD headquarters"
-                className="w-full h-64 object-cover"
-                data-testid="img-about-building"
-              />
-            </Card>
-          </div>
         </div>
       </section>
 
@@ -160,39 +107,6 @@ export default function About({ onBack }: AboutProps) {
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Our Journey</h2>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-0.5 w-0.5 h-full bg-gradient-to-b from-chart-1 via-primary to-chart-2" />
-            
-            <div className="space-y-12">
-              {timeline.map((item, index) => (
-                <div key={index} className={`flex items-center ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'}`}>
-                  <div className={`flex-1 ${index % 2 === 0 ? 'lg:text-right lg:pr-8' : 'lg:text-left lg:pl-8'}`}>
-                    <Card className="p-6 hover-elevate">
-                      <CardContent className="p-0">
-                        <div className="text-2xl font-bold text-primary mb-2">{item.year}</div>
-                        <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                        <p className="text-muted-foreground">{item.description}</p>
-                      </CardContent>
-                    </Card>
-                  </div>
-                  
-                  {/* Timeline dot */}
-                  <div className="relative z-10">
-                    <div className="w-4 h-4 bg-gradient-to-r from-chart-1 to-primary rounded-full border-4 border-background" />
-                  </div>
-                  
-                  <div className="flex-1" />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Leadership */}
       <section className="py-16 bg-gradient-to-r from-background to-muted/10">
@@ -205,7 +119,7 @@ export default function About({ onBack }: AboutProps) {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {leadership.map((leader, index) => (
               <Card key={index} className="p-6 text-center hover-elevate">
                 <CardContent className="p-0">

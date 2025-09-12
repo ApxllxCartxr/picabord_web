@@ -4,6 +4,9 @@ import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, Zap, Globe } from "lucide-react";
 import backgroundImage from "@assets/generated_images/Aurora_tech_background_gradient_bacc3caf.png";
 import softwareBackgroundImage from "@assets/generated_images/Software_development_workspace_background_f8ff4622.png";
+import solarPanelImage from "@assets/generated_images/Solar_panel_background_image_c33090dc.png";
+import aiTechImage from "@assets/generated_images/AI_technology_background_image_afdab38d.png";
+import annotationImage from "@assets/generated_images/Data_annotation_background_image_67631014.png";
 
 interface DivisionProps {
   division: string;
@@ -72,9 +75,17 @@ export default function Division({ division, onBack }: DivisionProps) {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img 
-            src={division === 'tec' ? softwareBackgroundImage : backgroundImage} 
+            src={
+              division === 'tec' ? softwareBackgroundImage :
+              division === 'arclight' ? solarPanelImage :
+              division === 'deeptech' ? aiTechImage :
+              division === 'annotiq' ? annotationImage :
+              backgroundImage
+            } 
             alt="Background" 
-            className="w-full h-full object-cover"
+            className={`w-full h-full object-cover ${
+              division === 'arclight' || division === 'deeptech' || division === 'annotiq' ? 'blur-sm' : ''
+            }`}
           />
         </div>
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
