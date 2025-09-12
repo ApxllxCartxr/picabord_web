@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, CheckCircle, Zap, Globe } from "lucide-react";
 import backgroundImage from "@assets/generated_images/Aurora_tech_background_gradient_bacc3caf.png";
+import softwareBackgroundImage from "@assets/generated_images/Software_development_workspace_background_f8ff4622.png";
 
 interface DivisionProps {
   division: string;
@@ -71,7 +72,7 @@ export default function Division({ division, onBack }: DivisionProps) {
       <section className="relative py-24 overflow-hidden">
         <div className="absolute inset-0 opacity-30">
           <img 
-            src={backgroundImage} 
+            src={division === 'tec' ? softwareBackgroundImage : backgroundImage} 
             alt="Background" 
             className="w-full h-full object-cover"
           />

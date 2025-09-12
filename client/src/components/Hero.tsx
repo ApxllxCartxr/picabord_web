@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Play } from "lucide-react";
-import divisionsImage from "@assets/generated_images/Tech_divisions_showcase_workspace_5e9215fc.png";
+import divisionsImage from "@assets/generated_images/Aurora_tech_background_gradient_97755935.png";
 
 interface HeroProps {
   onLearnMore: () => void;
