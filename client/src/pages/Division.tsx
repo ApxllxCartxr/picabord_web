@@ -13,8 +13,8 @@ export default function Division({ division, onBack }: DivisionProps) {
   const divisionData: Record<string, any> = {
     tec: {
       title: "TEC",
-      subtitle: "SaaS Solutions & Technical Engineering",
-      description: "We are developing innovative SaaS-based products that revolutionize business operations. Our focus is on creating cloud-native solutions that streamline workflows, enhance productivity, and provide scalable business management tools.",
+      subtitle: "Software Product Development & Engineering",
+      description: "We specialize in developing innovative software products that transform how businesses operate. Our expertise spans across web applications, mobile solutions, enterprise software, and cloud-based platforms designed to streamline workflows, enhance productivity, and deliver exceptional user experiences.",
       color: "from-chart-1 to-primary",
       products: [
         {
@@ -29,12 +29,12 @@ export default function Division({ division, onBack }: DivisionProps) {
         }
       ],
       features: [
-        "Cloud-Native SaaS Architecture",
+        "Modern Software Architecture",
         "Real-time Data Synchronization", 
         "Advanced User Analytics",
-        "Multi-tenant Security",
-        "API Integration Platform",
-        "Scalable Infrastructure"
+        "Enterprise-Grade Security",
+        "Comprehensive API Ecosystem",
+        "Scalable Software Infrastructure"
       ],
       applications: [
         "Business Process Automation",
@@ -111,9 +111,9 @@ export default function Division({ division, onBack }: DivisionProps) {
             /* Product showcase for TEC */
             <div className="space-y-12">
               <div className="text-center">
-                <h2 className="text-3xl font-bold mb-4">Our SaaS Products</h2>
+                <h2 className="text-3xl font-bold mb-4">Our Software Products</h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Revolutionary cloud-based solutions currently in development
+                  Innovative software solutions currently in development
                 </p>
               </div>
               
