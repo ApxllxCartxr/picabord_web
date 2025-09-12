@@ -16,19 +16,19 @@
 
   --background: 220 15% 97%;
 
-  --foreground: 240 25% 20%;
+  --foreground: 240 25% 10%;
 
   --border: 220 13% 91%;
 
   --card: 220 14% 95%;
 
-  --card-foreground: 240 25% 20%;
+  --card-foreground: 240 25% 10%;
 
   --card-border: 220 13% 90%;
 
   --sidebar: 220 12% 93%;
 
-  --sidebar-foreground: 240 25% 20%;
+  --sidebar-foreground: 240 25% 10%;
 
   --sidebar-border: 220 12% 88%;
 
@@ -38,13 +38,13 @@
 
   --sidebar-accent: 220 10% 90%;
 
-  --sidebar-accent-foreground: 240 25% 20%;
+  --sidebar-accent-foreground: 240 25% 10%;
 
   --sidebar-ring: 240 85% 15%;
 
   --popover: 220 13% 92%;
 
-  --popover-foreground: 240 25% 20%;
+  --popover-foreground: 240 25% 10%;
 
   --popover-border: 220 12% 87%;
 
@@ -54,15 +54,15 @@
 
   --secondary: 220 12% 89%;
 
-  --secondary-foreground: 240 25% 20%;
+  --secondary-foreground: 240 25% 10%;
 
   --muted: 220 10% 91%;
 
-  --muted-foreground: 240 20% 45%;
+  --muted-foreground: 240 20% 35%;
 
   --accent: 220 8% 92%;
 
-  --accent-foreground: 240 25% 20%;
+  --accent-foreground: 240 25% 10%;
 
   --destructive: 0 75% 35%;
 
@@ -134,19 +134,19 @@
 
   --background: 240 25% 8%;
 
-  --foreground: 220 15% 85%;
+  --foreground: 220 15% 95%;
 
   --border: 240 20% 12%;
 
   --card: 240 23% 10%;
 
-  --card-foreground: 220 15% 85%;
+  --card-foreground: 220 15% 95%;
 
   --card-border: 240 20% 14%;
 
   --sidebar: 240 25% 6%;
 
-  --sidebar-foreground: 220 15% 85%;
+  --sidebar-foreground: 220 15% 95%;
 
   --sidebar-border: 240 22% 10%;
 
@@ -156,13 +156,13 @@
 
   --sidebar-accent: 240 20% 11%;
 
-  --sidebar-accent-foreground: 220 15% 85%;
+  --sidebar-accent-foreground: 220 15% 95%;
 
   --sidebar-ring: 240 85% 25%;
 
   --popover: 240 22% 12%;
 
-  --popover-foreground: 220 15% 85%;
+  --popover-foreground: 220 15% 95%;
 
   --popover-border: 240 20% 16%;
 
@@ -172,15 +172,15 @@
 
   --secondary: 240 20% 15%;
 
-  --secondary-foreground: 220 15% 85%;
+  --secondary-foreground: 220 15% 95%;
 
   --muted: 240 18% 13%;
 
-  --muted-foreground: 220 12% 65%;
+  --muted-foreground: 220 12% 75%;
 
   --accent: 240 15% 14%;
 
-  --accent-foreground: 220 15% 85%;
+  --accent-foreground: 220 15% 95%;
 
   --destructive: 0 75% 35%;
 
