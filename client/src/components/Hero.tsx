@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Play } from "lucide-react";
+import divisionsImage from "@assets/generated_images/Tech_divisions_showcase_workspace_5e9215fc.png";
 
 interface HeroProps {
   onLearnMore: () => void;
@@ -10,6 +11,16 @@ interface HeroProps {
 export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
+      {/* Background image with blur */}
+      <div className="absolute inset-0">
+        <img 
+          src={divisionsImage} 
+          alt="Technology divisions showcase" 
+          className="w-full h-full object-cover opacity-20 blur-sm"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/70 to-background/60" />
+      </div>
+      
       {/* Background gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-r from-chart-1/10 via-primary/10 to-chart-2/10 opacity-50" />
       
