@@ -9,6 +9,14 @@ interface DivisionsSectionProps {
 export default function DivisionsSection({ onDivisionSelect }: DivisionsSectionProps) {
   const divisions = [
     {
+      title: "PIKA",
+      description: "High-performance single board computers and embedded systems that power the next generation of IoT devices, edge computing, and industrial automation.",
+      features: [],
+      icon: Cpu,
+      gradientFrom: "from-chart-1",
+      gradientTo: "to-chart-3"
+    },
+    {
       title: "TEC",
       description: "Advanced technical engineering solutions designed to tackle the most complex industrial challenges with precision and reliability.",
       features: [],
@@ -68,7 +76,7 @@ export default function DivisionsSection({ onDivisionSelect }: DivisionsSectionP
         </div>
 
         {/* Divisions Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {divisions.map((division, index) => (
             <DivisionCard
               key={index}
