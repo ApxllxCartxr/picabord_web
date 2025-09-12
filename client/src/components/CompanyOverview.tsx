@@ -119,7 +119,7 @@ export default function CompanyOverview({ onExploreMore }: CompanyOverviewProps)
           <div className="bg-gradient-to-r from-chart-1/10 to-chart-2/10 rounded-3xl p-12 border border-chart-1/20">
             <h3 className="text-3xl font-bold mb-6">
               Building Tomorrow's{" "}
-              <span className="bg-gradient-to-r from-chart-1 to-chart-2 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3 bg-clip-text text-transparent">
                 Technology
               </span>
             </h3>

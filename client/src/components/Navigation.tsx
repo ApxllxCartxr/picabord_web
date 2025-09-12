@@ -33,7 +33,7 @@ export default function Navigation({ currentSection, onSectionChange }: Navigati
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-chart-1 to-chart-2 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3 bg-clip-text text-transparent">
               PICABORD
             </h1>
           </div>

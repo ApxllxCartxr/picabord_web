@@ -22,7 +22,7 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="text-foreground">Let's</span>
                 <br />
-                <span className="bg-gradient-to-r from-chart-1 to-chart-2 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3 bg-clip-text text-transparent">
                   Explore
                 </span>
               </h1>

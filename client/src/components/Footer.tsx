@@ -46,7 +46,7 @@ export default function Footer() {
           {/* Brand & Newsletter */}
           <div className="lg:col-span-1 space-y-6">
             <div>
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-chart-1 to-chart-2 bg-clip-text text-transparent mb-4">
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-chart-1 via-chart-2 to-chart-3 bg-clip-text text-transparent mb-4">
                 PICABORD
               </h3>
               <p className="text-muted-foreground text-sm">
