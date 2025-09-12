@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, CheckCircle, Zap, Users, Globe } from "lucide-react";
+import { ArrowLeft, CheckCircle, Zap, Globe } from "lucide-react";
 import backgroundImage from "@assets/generated_images/Aurora_tech_background_gradient_bacc3caf.png";
 
 interface DivisionProps {
@@ -277,51 +277,6 @@ export default function Division({ division, onBack }: DivisionProps) {
         </div>
       </section>
 
-      {/* Stats & Contact */}
-      <section className="py-16 bg-gradient-to-r from-muted/20 to-background">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-3 gap-8 text-center">
-            <Card className="p-6 hover-elevate">
-              <CardContent className="p-0">
-                <div className={`text-3xl font-bold bg-gradient-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
-                  500+
-                </div>
-                <div className="text-sm text-muted-foreground">Projects Completed</div>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 hover-elevate">
-              <CardContent className="p-0">
-                <div className={`text-3xl font-bold bg-gradient-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
-                  50+
-                </div>
-                <div className="text-sm text-muted-foreground">Team Members</div>
-              </CardContent>
-            </Card>
-            
-            <Card className="p-6 hover-elevate">
-              <CardContent className="p-0">
-                <div className={`text-3xl font-bold bg-gradient-to-r ${data.color} bg-clip-text text-transparent mb-2`}>
-                  99.5%
-                </div>
-                <div className="text-sm text-muted-foreground">Client Satisfaction</div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="text-center mt-12">
-            <Button
-              size="lg"
-              className={`bg-gradient-to-r ${data.color} text-primary-foreground px-8`}
-              data-testid="button-contact-division"
-              onClick={() => console.log(`Contact ${data.title} division`)}
-            >
-              <Users className="w-5 h-5 mr-2" />
-              Contact Our Team
-            </Button>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
