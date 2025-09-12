@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Mail, Phone, MapPin, Clock, Send } from "lucide-react";
+import { ArrowLeft, Mail, Phone, Linkedin, Send } from "lucide-react";
 
 interface ContactProps {
   onBack: () => void;
@@ -47,22 +47,16 @@ export default function Contact({ onBack }: ContactProps) {
       description: "Send us an email anytime"
     },
     {
+      icon: Linkedin,
+      title: "LinkedIn",
+      detail: "linkedin.com/company/picabord",
+      description: "Connect with us professionally"
+    },
+    {
       icon: Phone,
       title: "Phone",
       detail: "+1 (555) 123-4567",
       description: "Mon-Fri from 8am to 5pm PST"
-    },
-    {
-      icon: MapPin,
-      title: "Address",
-      detail: "123 Innovation Drive, San Francisco, CA 94102",
-      description: "Visit our headquarters"
-    },
-    {
-      icon: Clock,
-      title: "Business Hours",
-      detail: "Monday - Friday: 8:00 AM - 5:00 PM PST",
-      description: "We're here to help"
     }
   ];
 
