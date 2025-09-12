@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowRight, Play } from "lucide-react";
-import pikaImage from "@assets/generated_images/PIKA1_flagship_product_hero_7be1e5f2.png";
 
 interface HeroProps {
   onLearnMore: () => void;
@@ -15,9 +14,8 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
       <div className="absolute inset-0 bg-gradient-to-r from-chart-1/10 via-primary/10 to-chart-2/10 opacity-50" />
       
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="text-center lg:text-left space-y-12">
+        <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
+          <div className="space-y-12">
             <div className="space-y-8">
               <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
                 <span className="text-foreground">Let's</span>
@@ -27,7 +25,7 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
                 </span>
               </h1>
               
-              <p className="text-xl md:text-2xl text-muted-foreground max-w-lg mx-auto lg:mx-0 leading-relaxed">
+              <p className="text-xl md:text-2xl text-muted-foreground max-w-lg mx-auto leading-relaxed">
                 Beyond boundaries.
                 <br />
                 Beyond imagination.
@@ -37,7 +35,7 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-6 justify-center lg:justify-start">
+            <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Button
                 size="lg"
                 onClick={onLearnMore}
@@ -58,20 +56,6 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
               </Button>
             </div>
 
-          </div>
-
-          {/* Right Content - Product Image */}
-          <div className="relative">
-            <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-primary/20 hover-elevate">
-              <img
-                src={pikaImage}
-                alt="PIKA1 flagship product"
-                className="w-full h-auto rounded-lg shadow-lg"
-                data-testid="img-pika1-hero"
-              />
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-chart-1 to-chart-2 rounded-full opacity-20 blur-xl" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-primary to-chart-2 rounded-full opacity-20 blur-xl" />
-            </Card>
           </div>
         </div>
       </div>

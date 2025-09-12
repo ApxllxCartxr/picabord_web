@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Target, Zap, Users, Globe } from "lucide-react";
+import { Target, Zap, Users, Globe, Cpu, Brain, Rocket } from "lucide-react";
 import facilityImage from "@assets/generated_images/Tech_research_facility_interior_8d8e4ed6.png";
 import buildingImage from "@assets/generated_images/Modern_office_building_exterior_a50a638e.png";
 
@@ -133,7 +133,9 @@ export default function CompanyOverview({ onExploreMore }: CompanyOverviewProps)
 
             <div className="grid md:grid-cols-3 gap-8 mb-8">
               <div className="space-y-3">
-                <div className="w-16 h-16 bg-gradient-to-r from-chart-1 to-chart-2 rounded-2xl mx-auto opacity-20"></div>
+                <div className="w-16 h-16 bg-gradient-to-r from-chart-1/20 to-chart-2/20 rounded-2xl mx-auto flex items-center justify-center">
+                  <Cpu className="w-8 h-8 text-chart-1" />
+                </div>
                 <h4 className="font-semibold">Embedded Systems</h4>
                 <p className="text-sm text-muted-foreground">
                   Precision-engineered solutions for tomorrow's connected world
@@ -141,7 +143,9 @@ export default function CompanyOverview({ onExploreMore }: CompanyOverviewProps)
               </div>
               
               <div className="space-y-3">
-                <div className="w-16 h-16 bg-gradient-to-r from-chart-1 to-chart-2 rounded-2xl mx-auto opacity-20"></div>
+                <div className="w-16 h-16 bg-gradient-to-r from-chart-1/20 to-chart-2/20 rounded-2xl mx-auto flex items-center justify-center">
+                  <Brain className="w-8 h-8 text-chart-2" />
+                </div>
                 <h4 className="font-semibold">AI DeepTech</h4>
                 <p className="text-sm text-muted-foreground">
                   Advanced artificial intelligence pushing the boundaries of possibility
@@ -149,7 +153,9 @@ export default function CompanyOverview({ onExploreMore }: CompanyOverviewProps)
               </div>
               
               <div className="space-y-3">
-                <div className="w-16 h-16 bg-gradient-to-r from-chart-1 to-chart-2 rounded-2xl mx-auto opacity-20"></div>
+                <div className="w-16 h-16 bg-gradient-to-r from-chart-1/20 to-chart-2/20 rounded-2xl mx-auto flex items-center justify-center">
+                  <Rocket className="w-8 h-8 text-chart-3" />
+                </div>
                 <h4 className="font-semibold">Future Forward</h4>
                 <p className="text-sm text-muted-foreground">
                   Innovation that transforms ideas into reality for a better tomorrow
