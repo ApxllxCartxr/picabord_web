@@ -17,8 +17,8 @@ RUN npm ci
 # Copy the rest of the app
 COPY . .
 
-# Build the app
-RUN npm run build
+# Build the app (disable Turbopack for Docker builds - use webpack instead)
+RUN TURBOPACK=0 npm run build
 
 # Final image for running the app
 FROM node:20-alpine AS runner
