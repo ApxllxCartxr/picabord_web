@@ -8,6 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Mail, Phone, MapPin, Send } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 interface ContactProps {
   onBack: () => void;
@@ -16,6 +17,7 @@ interface ContactProps {
 export default function Contact({ onBack }: ContactProps) {
   const formAnimation = useScrollAnimation({ threshold: 0.2 });
   const ctaAnimation = useScrollAnimation({ threshold: 0.3 });
+  const { trackEvent, trackConversion } = useAnalytics();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,9 +33,30 @@ export default function Contact({ onBack }: ContactProps) {
     });
   };
 
+  const handleFieldFocus = (fieldName: string) => {
+    trackEvent('contact_form_field_focus', {
+      field: fieldName,
+      form_type: 'contact',
+      source_page: '/'
+    });
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Contact form submitted:", formData);
+    
+    // Track form submission as conversion event
+    trackConversion('contact_form_submit', 1);
+    
+    // Track additional event with form details
+    trackEvent('contact_form_submit', {
+      form_type: 'contact',
+      source_page: '/',
+      has_company: !!formData.company,
+      subject_length: formData.subject.length,
+      message_length: formData.message.length
+    });
+    
     // Reset form
     setFormData({
       name: "",
@@ -122,6 +145,7 @@ export default function Contact({ onBack }: ContactProps) {
                         name="name"
                         value={formData.name}
                         onChange={handleInputChange}
+                        onFocus={() => handleFieldFocus('name')}
                         placeholder="Your name"
                         required
                         data-testid="input-name"
@@ -134,6 +158,7 @@ export default function Contact({ onBack }: ContactProps) {
                         type="email"
                         value={formData.email}
                         onChange={handleInputChange}
+                        onFocus={() => handleFieldFocus('email')}
                         placeholder="your.email@company.com"
                         required
                         data-testid="input-email"
@@ -147,6 +172,7 @@ export default function Contact({ onBack }: ContactProps) {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
+                      onFocus={() => handleFieldFocus('company')}
                       placeholder="Your company name"
                       data-testid="input-company"
                     />
@@ -158,6 +184,7 @@ export default function Contact({ onBack }: ContactProps) {
                       name="subject"
                       value={formData.subject}
                       onChange={handleInputChange}
+                      onFocus={() => handleFieldFocus('subject')}
                       placeholder="Brief description of your inquiry"
                       required
                       data-testid="input-subject"
@@ -170,6 +197,7 @@ export default function Contact({ onBack }: ContactProps) {
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
+                      onFocus={() => handleFieldFocus('message')}
                       placeholder="Tell us more about your needs..."
                       rows={5}
                       required
@@ -251,6 +279,12 @@ export default function Contact({ onBack }: ContactProps) {
                     size="lg"
                     className="bg-gradient-to-r from-chart-1 to-primary text-primary-foreground px-8 sm:px-12 min-h-[44px] hover-elevate focus-visible-ring"
                     onClick={() => {
+                      // Track CTA button click
+                      trackEvent('cta_button_click', {
+                        button_text: 'Reach Out to Us',
+                        location: 'custom_software_cta',
+                        page: '/contact'
+                      });
                       // Scroll to form
                       const form = document.querySelector('form');
                       form?.scrollIntoView({ behavior: 'smooth', block: 'center' });

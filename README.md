@@ -75,7 +75,14 @@ Create a `.env.local` file:
 
 ```env
 DATABASE_URL=your_database_url
+
+# Analytics (Plausible)
+NEXT_PUBLIC_ANALYTICS_DOMAIN=picabord.space
+NEXT_PUBLIC_PLAUSIBLE_SCRIPT_SRC=https://plausible.io/js/script.js
+NEXT_PUBLIC_ANALYTICS_ENABLED=true
 ```
+
+See [docs/ANALYTICS_SETUP.md](./docs/ANALYTICS_SETUP.md) for complete analytics configuration guide.
 
 ## Migration Notes
 

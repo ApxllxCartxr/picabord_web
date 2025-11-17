@@ -18,6 +18,7 @@ export default function ClientLayout({
     if (!pathname) return 'home';
     if (pathname === '/') return 'home';
     if (pathname.startsWith('/about')) return 'about';
+    if (pathname.startsWith('/blog')) return 'blog';
     if (pathname.startsWith('/contact')) return 'contact';
     if (pathname.startsWith('/pika')) return 'pika';
     if (pathname.startsWith('/tec')) return 'tec';
@@ -28,6 +29,7 @@ export default function ClientLayout({
     const routes: Record<string, string> = {
       'home': '/',
       'about': '/about',
+      'blog': '/blog',
       'contact': '/contact',
       'pika': '/pika',
       'tec': '/tec',

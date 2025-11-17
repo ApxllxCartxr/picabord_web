@@ -39,13 +39,26 @@ declare namespace __next_route_internal_types__ {
     | `/Home`
     | `/PIKA`
     | `/about`
+    | `/api/cms/auth/status`
+    | `/api/cms/login`
+    | `/api/cms/logout`
+    | `/api/cms/posts`
+    | `/api/cms/upload`
     | `/api/users`
+    | `/blog`
+    | `/cms/admin`
+    | `/cms/login`
     | `/contact`
     | `/not-found`
     | `/pika`
+    | `/privacy`
+    | `/privacy-settings`
     | `/tec`
+    | `/work`
   type DynamicRoutes<T extends string = string> = 
+    | `/api/cms/posts/${SafeSlug<T>}`
     | `/api/users/${SafeSlug<T>}`
+    | `/blog/${SafeSlug<T>}`
 
   type RouteImpl<T> = 
     | StaticRoutes

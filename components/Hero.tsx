@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Rocket, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import DarkVeil from "@/components/DarkVeil";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 interface HeroProps {
   onLearnMore: () => void;
@@ -10,6 +11,7 @@ interface HeroProps {
 }
 
 export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
+  const { trackEvent } = useAnalytics();
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-background via-background to-primary/5">
@@ -57,7 +59,14 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
 
                 <Button
                   size="lg"
-                  onClick={onLearnMore}
+                  onClick={() => {
+                    trackEvent('cta_button_click', {
+                      button_text: 'Begin Journey',
+                      location: 'hero_section',
+                      page: '/'
+                    });
+                    onLearnMore();
+                  }}
                   data-testid="button-learn-more"
                   className="relative bg-gradient-to-r from-chart-1 via-primary to-chart-2 hover:bg-[#05060b] text-white hover:text-primary font-semibold px-10 sm:px-16 py-6 text-base sm:text-xl rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl focus-visible-ring min-h-[56px] border-2 border-white/20 group-hover:border-primary/40"
                 >

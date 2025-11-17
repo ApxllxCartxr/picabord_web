@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Joseph/Projects/PICABORD_Web/app/api/cms/logout/route.ts"],"sourcesContent":["import { NextRequest, NextResponse } from 'next/server';\r\n\r\nexport async function POST(request: NextRequest) {\r\n  const res = NextResponse.json({ success: true, message: 'Logged out' });\r\n  res.cookies.delete('cms-session');\r\n  return res;\r\n}\r\n\r\nexport async function GET() {\r\n  return NextResponse.json({ success: true, message: 'Logout endpoint' });\r\n}\r\n"],"names":[],"mappings":";;;;;;AAAA;;AAEO,eAAe,KAAK,OAAoB;IAC7C,MAAM,MAAM,gJAAY,CAAC,IAAI,CAAC;QAAE,SAAS;QAAM,SAAS;IAAa;IACrE,IAAI,OAAO,CAAC,MAAM,CAAC;IACnB,OAAO;AACT;AAEO,eAAe;IACpB,OAAO,gJAAY,CAAC,IAAI,CAAC;QAAE,SAAS;QAAM,SAAS;IAAkB;AACvE","debugId":null}}]
+}

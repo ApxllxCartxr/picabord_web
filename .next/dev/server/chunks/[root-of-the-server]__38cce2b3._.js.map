@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 46, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Joseph/Projects/PICABORD_Web/app/api/cms/auth/status/route.ts"],"sourcesContent":["import { NextRequest, NextResponse } from 'next/server';\r\nimport { cookies } from 'next/headers';\r\n\r\nexport async function GET(request: NextRequest) {\r\n  const cookieStore = await cookies();\r\n  const session = cookieStore.get('cms-session');\r\n  \r\n  return NextResponse.json({\r\n    isAuthenticated: !!session,\r\n    user: session ? { username: 'admin' } : null,\r\n  });\r\n}\r\n"],"names":[],"mappings":";;;;AAAA;AACA;;;AAEO,eAAe,IAAI,OAAoB;IAC5C,MAAM,cAAc,MAAM,IAAA,4IAAO;IACjC,MAAM,UAAU,YAAY,GAAG,CAAC;IAEhC,OAAO,gJAAY,CAAC,IAAI,CAAC;QACvB,iBAAiB,CAAC,CAAC;QACnB,MAAM,UAAU;YAAE,UAAU;QAAQ,IAAI;IAC1C;AACF","debugId":null}}]
+}

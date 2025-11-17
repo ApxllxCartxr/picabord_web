@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, Award, Globe, Target, Brain, Cpu } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useAnalytics } from "@/hooks/use-analytics";
 
 interface AboutProps {
   onBack: () => void;
@@ -12,11 +13,12 @@ interface AboutProps {
 
 export default function About({ onBack }: AboutProps) {
   const valuesAnimation = useScrollAnimation({ threshold: 0.2 });
+  const { trackEvent } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background/50 to-muted/10">
       {/* Header */}
-      <section className="pt-28 pb-24">
+      <section className="pt-28 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Button
             variant="ghost"
@@ -28,7 +30,7 @@ export default function About({ onBack }: AboutProps) {
             Back to Home
           </Button>
           
-          <div className="text-center space-y-6 mb-16 animate-fade-in-up">
+          <div className="text-center space-y-6 mb-8 animate-fade-in-up">
             <Badge variant="outline" className="border-primary/30 text-primary font-picabord">
               About PICABORD
             </Badge>
@@ -38,7 +40,7 @@ export default function About({ onBack }: AboutProps) {
                 We Are
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-justify">
               We are a technology company that bridges the digital and physical worlds through innovative software and hardware solutions. Our dual expertise enables us to create comprehensive ecosystems that transform industries and empower businesses to achieve extraordinary outcomes.
             </p>
           </div>
@@ -47,11 +49,11 @@ export default function About({ onBack }: AboutProps) {
       </section>
 
       {/* Solutions Section */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={valuesAnimation.ref as React.RefObject<HTMLDivElement>}
-            className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-700 ${
+            className={`max-w-4xl mx-auto text-center mb-12 transition-all duration-700 ${
               valuesAnimation.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
@@ -61,7 +63,7 @@ export default function About({ onBack }: AboutProps) {
               Our{" "}
               <span className="text-primary">Solutions</span>
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-justify">
               We deliver comprehensive technology solutions across two core domains
             </p>
           </div>
@@ -84,7 +86,7 @@ export default function About({ onBack }: AboutProps) {
                     <p className="text-sm text-primary">TEC Division</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
                   Enterprise applications, cloud platforms, and innovative software products that transform how businesses operate and scale in the digital age.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
@@ -121,7 +123,7 @@ export default function About({ onBack }: AboutProps) {
                     <p className="text-sm text-primary">PIKA Division</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
                   Cutting-edge embedded systems and single-board computers that power the next generation of IoT, edge computing, and industrial applications.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
@@ -152,7 +154,7 @@ export default function About({ onBack }: AboutProps) {
               Looking to{" "}
               <span className="text-primary">Collaborate?</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground text-justify">
               Let's build something extraordinary together
             </p>
             <div className="relative group inline-block">
@@ -162,7 +164,16 @@ export default function About({ onBack }: AboutProps) {
                 asChild
                 className="relative bg-gradient-to-r from-chart-1 via-primary to-chart-2 hover:bg-[#05060b] text-white hover:text-primary font-semibold px-12 py-6 text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl min-h-[56px] border-2 border-white/20 group-hover:border-primary/40"
               >
-                <a href="mailto:connect@picabord.space">
+                <a 
+                  href="mailto:connect@picabord.space"
+                  onClick={() => {
+                    trackEvent('cta_button_click', {
+                      button_text: 'Contact Us',
+                      location: 'collaboration_cta',
+                      page: '/about'
+                    });
+                  }}
+                >
                   Contact Us
                 </a>
               </Button>

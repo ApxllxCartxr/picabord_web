@@ -26,13 +26,15 @@ export default function Navigation({ currentSection, onSectionChange }: Navigati
 
   const sections = [
     { id: "solutions", label: "Solutions" },
+    { id: "work", label: "Work" },
+    { id: "blog", label: "Blog" },
     { id: "about", label: "About" }
   ];
 
   const solutionsItems = [
     {
       label: "Hardware",
-      description: "PIKA Division",
+      description: "",
       bgGradient: "from-cyan-500/10 via-cyan-400/5 to-transparent",
       borderColor: "border-cyan-500/20",
       textColor: "text-foreground",
@@ -41,7 +43,7 @@ export default function Navigation({ currentSection, onSectionChange }: Navigati
     },
     {
       label: "Software",
-      description: "TEC Division",
+      description: "",
       bgGradient: "from-purple-500/10 via-purple-400/5 to-transparent",
       borderColor: "border-purple-500/20",
       textColor: "text-foreground",
@@ -195,7 +197,7 @@ export default function Navigation({ currentSection, onSectionChange }: Navigati
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-[99999] w-[95%] max-w-6xl" aria-label="Main navigation">
       {/* Glassmorphic Pill Container */}
-      <div className="bg-background/70 backdrop-blur-xl border border-border/50 rounded-3xl shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.3)] px-6 py-3">
+      <div className="bg-background/30 backdrop-blur-2xl border border-border/80 rounded-full shadow-lg dark:shadow-[0_0_30px_rgba(0,0,0,0.3)] px-6 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex-shrink-0 flex items-center gap-2 group">

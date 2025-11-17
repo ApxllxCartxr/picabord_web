@@ -3,37 +3,34 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft } from "lucide-react";
-import Link from "next/link";
-import { 
-  CustomAwardIcon, 
-  CustomGlobeIcon, 
-  CustomTargetIcon,
-  CustomBrainIcon,
-  CustomCpuIcon
-} from "@/components/icons/custom-icons";
+import { ArrowLeft, Award, Globe, Target, Brain, Cpu } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import { useAnalytics } from "@/hooks/use-analytics";
 
-export default function AboutPage() {
+interface AboutProps {
+  onBack: () => void;
+}
+
+export default function About({ onBack }: AboutProps) {
   const valuesAnimation = useScrollAnimation({ threshold: 0.2 });
+  const { trackEvent } = useAnalytics();
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background/50 to-muted/10">
       {/* Header */}
-      <section className="pt-28 pb-24">
+      <section className="pt-28 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Link href="/">
-            <Button
-              variant="ghost"
-              className="mb-8 hover-elevate"
-              data-testid="button-back-about"
-            >
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Button>
-          </Link>
+          <Button
+            variant="ghost"
+            onClick={onBack}
+            className="mb-8 hover-elevate"
+            data-testid="button-back-about"
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back to Home
+          </Button>
           
-          <div className="text-center space-y-6 mb-16 animate-fade-in-up">
+          <div className="text-center space-y-6 mb-8 animate-fade-in-up">
             <Badge variant="outline" className="border-primary/30 text-primary font-picabord">
               About PICABORD
             </Badge>
@@ -43,7 +40,7 @@ export default function AboutPage() {
                 We Are
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-justify">
               We are a technology company that bridges the digital and physical worlds through innovative software and hardware solutions. Our dual expertise enables us to create comprehensive ecosystems that transform industries and empower businesses to achieve extraordinary outcomes.
             </p>
           </div>
@@ -52,11 +49,11 @@ export default function AboutPage() {
       </section>
 
       {/* Solutions Section */}
-      <section className="py-16">
+      <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={valuesAnimation.ref as React.RefObject<HTMLDivElement>}
-            className={`max-w-4xl mx-auto text-center mb-16 transition-all duration-700 ${
+            className={`max-w-4xl mx-auto text-center mb-12 transition-all duration-700 ${
               valuesAnimation.isVisible 
                 ? 'opacity-100 translate-y-0' 
                 : 'opacity-0 translate-y-8'
@@ -66,7 +63,7 @@ export default function AboutPage() {
               Our{" "}
               <span className="text-primary">Solutions</span>
             </h2>
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-center">
               We deliver comprehensive technology solutions across two core domains
             </p>
           </div>
@@ -82,14 +79,13 @@ export default function AboutPage() {
               <CardContent className="p-0">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-chart-2 to-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CustomBrainIcon size={24} className="text-primary-foreground" />
+                    <Brain className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold mb-2">Software</h3>
-                    <p className="text-sm text-primary">TEC Division</p>
+                    <h3 className="text-2xl font-bold">Software</h3>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
                   Enterprise applications, cloud platforms, and innovative software products that transform how businesses operate and scale in the digital age.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
@@ -119,14 +115,13 @@ export default function AboutPage() {
               <CardContent className="p-0">
                 <div className="flex items-start space-x-4 mb-6">
                   <div className="w-12 h-12 bg-gradient-to-r from-chart-1 to-primary rounded-lg flex items-center justify-center flex-shrink-0">
-                    <CustomCpuIcon size={24} className="text-primary-foreground" />
+                    <Cpu className="w-6 h-6 text-primary-foreground" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold mb-2">Hardware</h3>
-                    <p className="text-sm text-primary">PIKA Division</p>
                   </div>
                 </div>
-                <p className="text-muted-foreground leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4 text-justify">
                   Cutting-edge embedded systems and single-board computers that power the next generation of IoT, edge computing, and industrial applications.
                 </p>
                 <ul className="space-y-2 text-sm text-muted-foreground">
@@ -157,7 +152,7 @@ export default function AboutPage() {
               Looking to{" "}
               <span className="text-primary">Collaborate?</span>
             </h2>
-            <p className="text-xl text-muted-foreground">
+            <p className="text-xl text-muted-foreground text-center">
               Let's build something extraordinary together
             </p>
             <div className="relative group inline-block">
@@ -167,7 +162,16 @@ export default function AboutPage() {
                 asChild
                 className="relative bg-gradient-to-r from-chart-1 via-primary to-chart-2 hover:bg-[#05060b] text-white hover:text-primary font-semibold px-12 py-6 text-lg rounded-2xl transition-all duration-500 hover:scale-105 hover:shadow-2xl min-h-[56px] border-2 border-white/20 group-hover:border-primary/40"
               >
-                <a href="mailto:connect@picabord.space">
+                <a 
+                  href="mailto:connect@picabord.space"
+                  onClick={() => {
+                    trackEvent('cta_button_click', {
+                      button_text: 'Contact Us',
+                      location: 'collaboration_cta',
+                      page: '/about'
+                    });
+                  }}
+                >
                   Contact Us
                 </a>
               </Button>
@@ -175,6 +179,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+
+
     </div>
   );
 }
