@@ -16,13 +16,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js 18 for build validation
+      - name: Setup Node.js 20 for build validation
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Validate build (lint/test/build)
         run: |
+          echo "Node version: $(node -v)"
           npm ci
           # Ensure package-lock.json is consistent with package.json; fail if it was modified
           npm install --package-lock-only
