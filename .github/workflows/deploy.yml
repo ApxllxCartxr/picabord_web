@@ -89,6 +89,8 @@ jobs:
           cache-to: type=gha,mode=max,scope=${{ github.repository }}
           build-args: |
             NODE_ENV=production
+            ENABLE_TURBOPACK=0
+            TURBOPACK=0
           # optionally, specify a build target to speed up multi-stage builds
           # target: runner
 

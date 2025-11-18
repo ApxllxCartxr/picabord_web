@@ -19,6 +19,7 @@ COPY . .
 
 # Build the app (disable Turbopack for Docker builds - use webpack instead)
 ENV TURBOPACK=0
+ENV ENABLE_TURBOPACK=0
 RUN npm run build
 
 # Final image for running the app
