@@ -1,6 +1,6 @@
 # Multi-stage Dockerfile for Next.js optimized for Raspberry Pi (arm64/armv7) and amd64
 # Builder: build the Next.js app with node 20
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 
 # disable Next.js telemetry
 ENV NEXT_TELEMETRY_DISABLED=1
@@ -18,10 +18,11 @@ RUN npm ci
 COPY . .
 
 # Build the app (disable Turbopack for Docker builds - use webpack instead)
-RUN TURBOPACK=0 npm run build
+ENV TURBOPACK=0
+RUN npm run build
 
 # Final image for running the app
-FROM node:20-alpine AS runner
+FROM node:20-slim AS runner
 WORKDIR /app
 
 ENV NODE_ENV=production
@@ -31,7 +32,7 @@ ENV PORT=3000
 # Copy minimal necessary files from builder
 COPY --from=builder /app/package*.json ./
 # Add curl for healthcheck and other network checks
-RUN apk add --no-cache curl
+RUN apt-get update && apt-get install -y --no-install-recommends curl ca-certificates && rm -rf /var/lib/apt/lists/*
 # Only install production dependencies in the final runtime image to reduce size
 RUN npm ci --omit=dev
 # Copy standalone build output (includes all dependencies)
@@ -50,9 +51,9 @@ LABEL org.opencontainers.image.authors="ThatDeveloperOverThere"
 LABEL org.opencontainers.image.licenses="MIT"
 
 # Add healthcheck for orchestrators (e.g., docker-compose)
-HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD wget -qO- http://localhost:${PORT}/ || exit 1
+HEALTHCHECK --interval=30s --timeout=5s --retries=3 CMD curl -fsS http://localhost:${PORT}/ || exit 1
 
-RUN addgroup -S nextgroup && adduser -S nextuser -G nextgroup
+RUN groupadd -r nextgroup && useradd -r -g nextgroup -s /usr/sbin/nologin -d /app nextuser
 RUN chown -R nextuser:nextgroup /app
 USER nextuser
 
