@@ -3,7 +3,7 @@
 This guide shows how to build, push, and run the PICABORD Next.js app on Raspberry Pi devices.
 
 ## Overview
-The repository provides a multi-arch Dockerfile and GitHub Actions workflow to build and publish images for arm64 and armv7 (legacy Pi models) as well as amd64. The images are pushed to GitHub Container Registry (GHCR) by the CI workflow.
+The repository provides a multi-arch Dockerfile and GitHub Actions workflow to build and publish images for arm64 and amd64. The images are pushed to GitHub Container Registry (GHCR) by the CI workflow. If you need armv7 (legacy Pi models), you can build it locally or add a CI job to your workflow to produce that artifact manually.
 
 ## Local Build & Test
 You can build the multi-arch image locally using Docker Buildx and QEMU:
@@ -12,7 +12,7 @@ You can build the multi-arch image locally using Docker Buildx and QEMU:
 # Create a builder (if you haven't)
 docker buildx create --use
 # Build multi-arch and push the image (or remove --push to build locally)
-docker buildx build --platform linux/arm64,linux/arm/v7,linux/amd64 -t ghcr.io/thatdeveloperoverthere/picabord-web:latest --push .
+docker buildx build --platform linux/arm64,linux/amd64 -t ghcr.io/thatdeveloperoverthere/picabord-web:latest --push .
 ```
 
 If you prefer to test directly on a single Raspberry Pi device, build for the pi architecture only:
@@ -20,7 +20,7 @@ If you prefer to test directly on a single Raspberry Pi device, build for the pi
 ```bash
 # For a Raspberry Pi 64-bit OS (arm64)
 docker buildx build --platform linux/arm64 -t picabord:local --load .
-# For Raspberry Pi OS 32-bit (armv7)
+# For Raspberry Pi OS 32-bit (armv7) (optional - manual build):
 docker buildx build --platform linux/arm/v7 -t picabord:local --load .
 
 # Run the image on the Pi

@@ -95,7 +95,7 @@ MIT
 
 ## Raspberry Pi / Docker Hosting
 
-This repository includes a multi-architecture `Dockerfile` and a GitHub Actions workflow that builds and publishes images to GitHub Container Registry (GHCR). See `docs/RPI_DEPLOYMENT.md` for full instructions on building, testing, and running the container on Raspberry Pi devices (arm64 and armv7) as well as on amd64.
+This repository includes a multi-architecture `Dockerfile` and a GitHub Actions workflow that builds and publishes images to GitHub Container Registry (GHCR). See `docs/RPI_DEPLOYMENT.md` for full instructions on building, testing, and running the container on Raspberry Pi devices (arm64) as well as on amd64. CI builds on `main` target amd64 and arm64 by default; armv7 builds must be run manually or as a special workflow.
 
 Quick commands:
 

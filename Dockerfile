@@ -1,4 +1,4 @@
-# Multi-stage Dockerfile for Next.js optimized for Raspberry Pi (arm64/armv7) and amd64
+# Multi-stage Dockerfile for Next.js optimized for Raspberry Pi (arm64) and amd64
 # Builder: build the Next.js app with node 20
 FROM node:20-slim AS builder
 
