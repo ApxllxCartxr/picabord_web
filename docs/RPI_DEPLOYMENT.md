@@ -1,6 +1,6 @@
-# Raspberry Pi Hosting (Docker / GHCR)
+# Raspberry Pi Hosting (Docker / GHCR) — optional
 
-This guide shows how to build, push, and run the PICABORD Next.js app on Raspberry Pi devices.
+This guide documents how to build, push, and run the PICABORD Next.js app on Raspberry Pi devices using Docker. Note: the project defaults to Vercel hosting and Docker/GHCR CI is disabled by default; use the instructions here only for manual or legacy deployments.
 
 ## Overview
 The repository provides a multi-arch Dockerfile and GitHub Actions workflow to build and publish images for arm64 and amd64. The images are pushed to GitHub Container Registry (GHCR) by the CI workflow. If you need armv7 (legacy Pi models), you can build it locally or add a CI job to your workflow to produce that artifact manually.

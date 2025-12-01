@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+// Force Node runtime (this route uses `fs` for reading/writing files)
+export const runtime = 'nodejs';
 import { cookies } from 'next/headers';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -106,6 +108,7 @@ export async function GET(_: NextRequest, { params }: RouteContext) {
 
 		return NextResponse.json(match.data);
 	} catch (error) {
+		console.error('GET /api/cms/posts/[slug] error:', error);
 		return NextResponse.json({ error: 'Failed to retrieve post' }, { status: 500 });
 	}
 }
@@ -139,6 +142,7 @@ export async function PUT(request: NextRequest, { params }: RouteContext) {
 
 		return NextResponse.json({ success: true, id, slug, message: 'Post updated successfully' });
 	} catch (error) {
+		console.error('PUT /api/cms/posts/[slug] error:', error);
 		return NextResponse.json({ error: 'Failed to update post' }, { status: 500 });
 	}
 }
@@ -159,6 +163,7 @@ export async function DELETE(_: NextRequest, { params }: RouteContext) {
 		await fs.promises.unlink(match.filePath);
 		return NextResponse.json({ success: true, message: 'Post deleted successfully' });
 	} catch (error) {
+		console.error('DELETE /api/cms/posts/[slug] error:', error);
 		return NextResponse.json({ error: 'Failed to delete post' }, { status: 500 });
 	}
 }

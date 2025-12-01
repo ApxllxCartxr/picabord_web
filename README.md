@@ -97,17 +97,10 @@ MIT
 
 This repository includes a Dockerfile and a GitHub Actions workflow that builds and publishes images to GitHub Container Registry (GHCR). See `docs/RPI_DEPLOYMENT.md` for full instructions on building, testing, and running the container on Raspberry Pi devices (arm64 v8). CI builds on this repository now target `linux/arm64/v8` only; other platforms must be built manually or via a custom workflow.
 
-Quick commands:
 
-```bash
-# Build & push a multi-arch image using the included script
-./scripts/build-rpi.sh ghcr.io/thatdeveloperoverthere/picabord-web:latest
+Note: This repository is configured for Vercel hosting by default. Docker build and GHCR publishing tooling remains in the repository for manual or legacy use, but automatic Docker CI is disabled. If you need to run Docker builds or publish images, use the scripts in `scripts/` or run the `.github/workflows/deploy.yml` via workflow dispatch.
 
-# Run with docker-compose
-docker-compose -f docker-compose.rpi.yml up -d
-```
-
-Note: This repository uses React 18.x to ensure compatibility with `framer-motion` and other peer-dependent libraries. If you notice a peer dependency install error, run `npm install` to update the lockfile and ensure your environment uses Node 18+.
+This repository uses React 18.x to ensure compatibility with `framer-motion` and other peer-dependent libraries. If you notice a peer dependency install error, run `npm install` to update the lockfile and ensure your environment uses Node 18+.
 
 After the recent dependency changes, please run locally and commit the lockfile before pushing:
 
@@ -117,3 +110,20 @@ git add package-lock.json
 git commit -m "chore: update lockfile to match downgraded React & aligned react-three versions"
 git push origin design-improvements-nov-2025
 ```
+
+## Vercel Hosting (primary)
+
+This project is set up for Vercel Next.js hosting. A minimal `vercel.json` is included to make repository import and deployment straightforward.
+
+Quick steps to deploy on Vercel:
+
+- Go to https://vercel.com and sign in with your GitHub account.
+- Import the repository `ApxllxCartxr/picabord_web` and follow the prompts.
+- Vercel will automatically run `npm ci` and `npm run build` (the `build` script is already defined in `package.json`).
+- Add any required environment variables (database URL, analytics keys, secrets) in the Vercel project Settings → Environment Variables.
+
+Notes:
+
+- `vercel.json` declares Node 20 as the engine; change this if you require a different Node version.
+- Vercel handles Next.js optimizations and serverless/static deployment nuances automatically; you do not need Docker to host on Vercel.
+- The repository previously included CI to build Docker images for GHCR. Those automatic Docker builds are disabled by default in CI — Vercel is the primary host. Manual Docker builds are still possible via `.github/workflows/deploy.yml` (use workflow dispatch) or the `scripts/` helper scripts if you need container images.

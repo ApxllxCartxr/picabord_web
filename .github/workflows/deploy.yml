@@ -1,8 +1,9 @@
-name: Build & Push Docker Image (multi-arch)
+name: Docker Build & Push (disabled - Vercel hosting)
 
+# NOTE: Docker CI is disabled by default. This workflow is left available
+# for manual runs only (workflow_dispatch) in case you need to build images
+# manually. The project is configured for Vercel hosting by default.
 on:
-  push:
-    branches: [ main, design-improvements-nov-2025 ]
   workflow_dispatch: {}
 
 jobs:

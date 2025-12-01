@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
+// Force Node runtime (needed because this route uses `fs` which is not available on the Edge runtime)
+export const runtime = 'nodejs';
 import { cookies } from 'next/headers';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -70,6 +72,7 @@ export async function GET(request: NextRequest) {
     const posts = await getAllPosts();
     return NextResponse.json(posts);
   } catch (error) {
+    console.error('GET /api/cms/posts error:', error);
     return NextResponse.json({ error: 'Failed to fetch posts' }, { status: 500 });
   }
 }
@@ -111,6 +114,7 @@ ${content}`;
 
     return NextResponse.json({ success: true, id, slug, message: 'Post created successfully' });
   } catch (error) {
+    console.error('POST /api/cms/posts error:', error);
     return NextResponse.json({ error: 'Failed to create post' }, { status: 500 });
   }
 }

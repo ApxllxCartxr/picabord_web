@@ -27,7 +27,6 @@ export default function Navigation({ currentSection, onSectionChange }: Navigati
   const sections = [
     { id: "solutions", label: "Solutions" },
     { id: "work", label: "Work" },
-    { id: "blog", label: "Blog" },
     { id: "about", label: "About" }
   ];
 
