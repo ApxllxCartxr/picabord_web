@@ -14,7 +14,7 @@ export default function Hero({ onLearnMore, onWatchDemo }: HeroProps) {
       {/* Background image with blur */}
       <div className="absolute inset-0">
         <img 
-          src={divisionsImage} 
+          src={divisionsImage.src} 
           alt="Technology divisions showcase" 
           className="w-full h-full object-cover opacity-20 blur-sm"
         />

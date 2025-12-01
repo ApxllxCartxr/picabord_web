@@ -1,0 +1,8 @@
+__turbopack_load_page_chunks__("/Division", [
+  "static/chunks/7895ff5e17cb9585.js",
+  "static/chunks/e5470a9637a6ab4b.js",
+  "static/chunks/054a56c670aa1a92.js",
+  "static/chunks/530f5fc2f93f9249.js",
+  "static/chunks/ec5c7df91d886354.js",
+  "static/chunks/turbopack-5fec6e210cea7579.js"
+])

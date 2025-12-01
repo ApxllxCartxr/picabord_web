@@ -1,0 +1,81 @@
+/*! locomotive-scroll v5.0.0-beta.11 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging,
+html.has-scroll-dragging * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}
+
+/* Locomotive Scroll Custom Styles */
+[data-scroll-container] {
+  min-height: 100vh;
+}
+
+[data-scroll-section] {
+  position: relative;
+  overflow: hidden;
+}
+
+.c-scrollbar {
+  position: fixed;
+  right: 3px;
+  top: 0;
+  width: 6px;
+  height: 100vh;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+  z-index: 100;
+}
+
+.c-scrollbar:hover {
+  transform: scaleX(1.5);
+}
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: hsl(var(--primary) / 0.3);
+  opacity: 0.5;
+  border-radius: 3px;
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+.has-scroll-scrolling .c-scrollbar_thumb {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+/* Make scrollbar visible when scrolling or hovering */
+.has-scroll-scrolling .c-scrollbar,
+.has-scroll-dragging .c-scrollbar,
+.c-scrollbar:hover {
+  opacity: 1;
+}
+
+/* Handle mobile touch */
+@media (hover: none) {
+  .c-scrollbar_thumb {
+    width: 4px;
+  }
+  .c-scrollbar:hover {
+    transform: none;
+  }
+}

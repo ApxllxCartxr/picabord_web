@@ -76,11 +76,11 @@ export default function Division({ division, onBack }: DivisionProps) {
         <div className="absolute inset-0 opacity-30">
           <img 
             src={
-              division === 'tec' ? softwareBackgroundImage :
-              division === 'arclight' ? solarPanelImage :
-              division === 'deeptech' ? aiTechImage :
-              division === 'annotiq' ? annotationImage :
-              backgroundImage
+              division === 'tec' ? softwareBackgroundImage.src :
+              division === 'arclight' ? solarPanelImage.src :
+              division === 'deeptech' ? aiTechImage.src :
+              division === 'annotiq' ? annotationImage.src :
+              backgroundImage.src
             } 
             alt="Background" 
             className={`w-full h-full object-cover ${

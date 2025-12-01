@@ -1,0 +1,9 @@
+__turbopack_load_page_chunks__("/PIKA", [
+  "static/chunks/d1551e27be9608ee.js",
+  "static/chunks/ec5c7df91d886354.js",
+  "static/chunks/696361e66393ee0c.js",
+  "static/chunks/054a56c670aa1a92.js",
+  "static/chunks/bcc7fec17b3a2955.js",
+  "static/chunks/530f5fc2f93f9249.js",
+  "static/chunks/turbopack-0ac5ad6e5449b563.js"
+])

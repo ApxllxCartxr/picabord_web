@@ -9,6 +9,8 @@ interface PIKAProps {
 }
 
 export default function PIKA({ onBack }: PIKAProps) {
+  const pikaImageSrc = typeof pikaImage === "string" ? pikaImage : pikaImage.src;
+
   const specifications = [
     { icon: Cpu, label: "ARM Cortex-A78", description: "High-performance 64-bit processor" },
     { icon: Zap, label: "8GB LPDDR5", description: "Ultra-fast memory for demanding applications" },
@@ -111,7 +113,7 @@ export default function PIKA({ onBack }: PIKAProps) {
             <div className="relative">
               <Card className="p-8 bg-gradient-to-br from-card to-card/50 border-primary/20 hover-elevate">
                 <img
-                  src={pikaImage}
+                  src={pikaImageSrc}
                   alt="PIKA-1 Single Board Computer"
                   className="w-full h-auto rounded-lg shadow-lg"
                   data-testid="img-pika1-showcase"

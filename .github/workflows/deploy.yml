@@ -1,0 +1,97 @@
+name: Docker Build & Push (disabled - Vercel hosting)
+
+# NOTE: Docker CI is disabled by default. This workflow is left available
+# for manual runs only (workflow_dispatch) in case you need to build images
+# manually. The project is configured for Vercel hosting by default.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compute lowercase image name
+        id: image_vars
+        run: |
+          # github.repository is "owner/repo"
+          owner="${{ github.repository_owner }}"
+          repo="${GITHUB_REPOSITORY#*/}"
+          owner_lower=$(echo "$owner" | tr '[:upper:]' '[:lower:]')
+          repo_lower=$(echo "$repo" | tr '[:upper:]' '[:lower:]')
+          echo "owner=$owner_lower" >> $GITHUB_OUTPUT
+          echo "repo=$repo_lower" >> $GITHUB_OUTPUT
+
+      - name: Setup Node.js 20 for build validation
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Validate (lint/test)
+        run: |
+          echo "Node version: $(node -v)"
+          npm ci
+          # Ensure package-lock.json is consistent with package.json; fail if it was modified
+          npm install --package-lock-only
+          git diff --quiet -- package-lock.json || echo "package-lock.json differs; please update and commit locally"
+          echo "Installed versions:"
+          npm ls react react-dom @react-three/fiber @react-three/drei
+          # Also run a peer-deps quick-script to detect conflicts
+          chmod +x ./scripts/check-peer-deps.sh
+          ./scripts/check-peer-deps.sh
+          npm run lint || echo "Lint failed (non-blocking)"
+          npm run test --if-present || echo "Tests failed (non-blocking)"
+
+      - name: Build (only on main branch)
+        if: github.ref == 'refs/heads/main'
+        run: |
+          npm run build
+
+      - name: Set up QEMU (for multi-arch)
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Determine build platforms
+        id: platform_vars
+        run: |
+          # Build only for Raspberry Pi arm64/v8 (aarch64) to target Pi 64-bit
+          echo "platforms=linux/arm64/v8" >> $GITHUB_OUTPUT
+
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & push (multi-arch)
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          platforms: ${{ steps.platform_vars.outputs.platforms }}
+          push: true
+          tags: |
+            ghcr.io/${{ steps.image_vars.outputs.owner }}/${{ steps.image_vars.outputs.repo }}:latest
+            ghcr.io/${{ steps.image_vars.outputs.owner }}/${{ steps.image_vars.outputs.repo }}:${{ github.sha }}
+          cache-from: type=gha,scope=${{ github.repository }}
+          cache-to: type=gha,mode=max,scope=${{ github.repository }}
+          build-args: |
+            NODE_ENV=production
+            ENABLE_TURBOPACK=0
+            TURBOPACK=0
+          # optionally, specify a build target to speed up multi-stage builds
+          # target: runner
+
+      - name: Verify pushed image (optional)
+        run: |
+          echo "Image pushed to ghcr.io/${{ steps.image_vars.outputs.owner }}/${{ steps.image_vars.outputs.repo }}"

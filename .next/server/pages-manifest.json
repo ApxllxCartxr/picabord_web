@@ -1,0 +1,12 @@
+{
+  "/About": "pages/About.html",
+  "/Contact": "pages/Contact.html",
+  "/Division": "pages/Division.html",
+  "/Home": "pages/Home.html",
+  "/PIKA": "pages/PIKA.html",
+  "/_app": "pages/_app.js",
+  "/_document": "pages/_document.js",
+  "/_error": "pages/_error.js",
+  "/not-found": "pages/not-found.html",
+  "/404": "pages/404.html"
+}

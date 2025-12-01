@@ -1,0 +1,3 @@
+{
+  "/api/cms/logout/route": "app/api/cms/logout/route.js"
+}
